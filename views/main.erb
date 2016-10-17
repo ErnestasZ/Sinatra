@@ -1,0 +1,52 @@
+<%= Time.now %>
+
+<table class="table table-responsive table-hover">
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Code</th>
+    <th>Age</th>
+  </thead>
+
+
+<tbody>
+  <% @customers.each do |customer| %>
+  <tr class="clickable-row" data-href="/customers/<%= customer.id %>">
+    <td><%= customer.id %></td>
+    <td><%= customer.name %></td>
+    <td><%= customer.surname %></td>
+    <td><%= customer.code %></td>
+    <td><%= customer.age %></td>
+
+  </tr>
+<% end %>
+</tbody>
+
+</table>
+
+<div class="text-center">
+  <ul class="pagination pagination-lg">
+    <li><a href="/?page=0">First</a></li>
+    <% if @page > 0 %>
+      <li><a href="/?page=<%= @page - 1 %>">Previous</a></li>
+    <% end %>
+    <li><a href="/?page=<%= @page - 1 %>"><%= @page - 1 %></a></li>
+    <li class="active"><a href="#"><%= @page %></a></li>
+    <li><a href="/?page=<%= @page + 1 %>"><%= @page + 1 %></a></li>
+  <% if @page < @last_page %>
+    <li><a href="/?page=<%= @page + 1 %>">Next</a></li>
+    <li><a href="/?page=<%= @last_page %>">Last</a></li>
+  <% end %>
+  </ul>
+</div>
+
+<script>
+
+  $(function() {
+    $(".clickable-row").click(function() {
+      window.document.location = $(this).data("href");
+    });
+  });
+
+</script>

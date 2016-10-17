@@ -1,0 +1,41 @@
+<h1> EDIT CUSTOMER </h1>
+
+
+<form action="/customers" method="post">
+<input name="id" type="hidden" value="<%= @customer.id %>">
+<table class="table table-responsive table-hover">
+
+  <thead>
+    <th>Parameter</th>
+    <th>Customer data</th>
+  </thead>
+
+  <tbody>
+
+    <tr >
+      <td>ID</td>
+      <td><%= @customer.id %></td>
+    </tr>
+    <tr>
+      <td>Vardas</td>
+      <td><input name="name" type="text" value="<%= @customer.name %>"></td>
+    </tr>
+    <tr>
+      <td>Pavarde</td>
+      <td><input name="surname" type="text" value="<%= @customer.surname %>"></td>
+    </tr>
+    <tr>
+      <td>Asmens kodas</td>
+      <td><input name="code" type="text" value="<%= @customer.code %>"></td>
+    </tr>
+    <tr>
+      <td>Amzius</td>
+      <td><input name="age" type="text" value="<%= @customer.age %>"></td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+<button type="submit" class="btn btn-warning">SAVE</button>
+</form>
