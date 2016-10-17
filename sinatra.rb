@@ -20,6 +20,11 @@ class ManoApp < Sinatra::Base
     erb :main
   end
 
+  get '/add_customer' do
+    @customer = Customer.new(name: '', surname: '', code: nil, age: nil, id: nil)
+    erb :add_customer
+  end
+
   get '/customers/:id' do
     @customer = Customer.find(params[:id])
     erb :show_customer
@@ -35,6 +40,17 @@ class ManoApp < Sinatra::Base
     @customer = Customer.find(params[:id])
     @customer.update(params)
     redirect "/customers/#{params[:id]}"
+
+  end
+
+  post '/add_customer' do
+    # binding.pry
+    @customer = Customer.new(name: params[:name], surname: params[:surname],
+                            age: params[:age], code: params[:code], id: nil)
+    binding.pry
+    @customer.create
+    erb :show_customer
+    # redirect "/customers/#{params[:id]}"
 
   end
 
